@@ -60,6 +60,13 @@ console.log(n4);
 
 
 // Answer 4:-
+function knownNodes(node){
+
+    return node.connections.keys();
+}
+
+
+console.log(knownNodes(n2));
 
 
 
