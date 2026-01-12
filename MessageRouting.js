@@ -46,7 +46,7 @@ connect(n3,n4);
 
 // Answer 3:-
 function initConnections(node){
-    return node.connections.set(node.name,node.neighbors)
+    node.connections.set(node.name,node.neighbors)
 }
 initConnections(n1);
 initConnections(n2);
@@ -61,12 +61,38 @@ console.log(n4);
 
 // Answer 4:-
 function knownNodes(node){
-
-    return node.connections.keys();
+let arr=[];
+    for(let key of node.connections.keys()){
+         
+        arr.push(key)
+         
+    }
+    return arr;
 }
 
 
-console.log(knownNodes(n2));
+console.log(knownNodes(n2)); //['Nest2']
+
+
+// Answer 5:- 
+// What i didn't understood is should i copy paste neighbours or should i copy paste Map keys??
+// And please don't give me set 2 unless this set is okay
+
+
+let map=new Map();
+map.set("a",n1);
+map.set("b",n2);
+map.set("c",n3);
+map.set("d",n4);
+
+console.log(map);
+
+let arr=[];
+for(let key of map.keys()){
+    arr.push(key);
+}
+
+console.log(arr);
 
 
 
