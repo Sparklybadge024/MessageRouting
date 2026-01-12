@@ -19,8 +19,9 @@
 // Answer 19:- It is possible and i guess it's a feature.
 // Answer 20:- Okay so the real internet requires transmission devices like:Cell towers, Routers etc.,that further transmitt the signal upto their reach and if they have any other reciever device upto their reach they will do the same and the signal will be delivered to the recieving devices.
 
-// Answer 1:-
+// Task 1:-
 function createNode(nod){
+    // This function is made to create node for our environment.
     return {name:nod,neighbors:[],seenMessages:[],connections:new Map()}
 }
 
@@ -30,8 +31,9 @@ let n2= createNode("Nest2");
 let n3= createNode("Nest3");
 let n4= createNode("Nest4");
 
-// Answer 2:- 
+// Task 2:- 
 function connect(x,y){
+    // This function is used to connect 2 nodes.
     if(!x.neighbors.includes(y)){
        x.neighbors.push(y);
     }
@@ -44,8 +46,9 @@ connect(n1,n2);
 connect(n2,n3);
 connect(n3,n4);
 
-// Answer 3:-
+// Task 3:-
 function initConnections(node){
+    // This function is used to populate the maps or the connections property of the nodes.
     node.connections.set(node.name,node.neighbors)
 }
 initConnections(n1);
@@ -59,8 +62,9 @@ console.log(n4);
 
 
 
-// Answer 4:-
+// Task 4:-
 function knownNodes(node){
+    // This function is used to store node.connections keys into an array
 let arr=[];
     for(let key of node.connections.keys()){
          
@@ -73,26 +77,28 @@ let arr=[];
 
 console.log(knownNodes(n2)); //['Nest2']
 
+// Concept understood keys are reffered to as the properties of map just like the properties of object however in map keys are not stored in Arrays unlike objects
 
-// Answer 5:- 
-// What i didn't understood is should i copy paste neighbours or should i copy paste Map keys??
-// And please don't give me set 2 unless this set is okay
+// let map=new Map();
+// map.set("a",n1);
+// map.set("b",n2);
+// map.set("c",n3);
+// map.set("d",n4);
 
+// console.log(map);
 
-let map=new Map();
-map.set("a",n1);
-map.set("b",n2);
-map.set("c",n3);
-map.set("d",n4);
+// let arr=[];
+// for(let key of map.keys()){
+//     arr.push(key);
+// }
 
-console.log(map);
-
-let arr=[];
-for(let key of map.keys()){
-    arr.push(key);
-}
-
-console.log(arr);
+// console.log(arr);
 
 
+// Task 5:- 
+console.log(n1);
+console.log(n2);
 
+// Copying connections means that 2 nodes learns about each others surroundings.
+
+// Task 6:-
