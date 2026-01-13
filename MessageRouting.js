@@ -107,12 +107,14 @@ shareConnection(n2,n1);
 console.log(n2);
 
 
-// let map=new Map();
-// map.set("a",n1);
-// map.set("b",n2);
-// map.set("c",n3);
-// map.set("d",n4);
 
-// console.log(map);
+
+// Task 7:-
+function broadcastConnections(node,exceptFor=null){
+    for(let i of node.neighbors){
+        if(i===exceptFor) continue;
+        shareConnection(i,node);
+    }
+}
 
 
