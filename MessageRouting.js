@@ -103,8 +103,7 @@ function shareConnection(reciever,sender){
     }
 }
 
-shareConnection(n2,n1);
-console.log(n2);
+
 
 
 
@@ -116,5 +115,13 @@ function broadcastConnections(node,exceptFor=null){
         shareConnection(i,node);
     }
 }
+
+// Task 8:-
+function floodConnections(startNode){
+       
+}
+
+
+
 
 
