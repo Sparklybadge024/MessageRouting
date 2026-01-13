@@ -91,15 +91,20 @@ console.log(n2);
 
 function shareConnection(reciever,sender){
     // This function shares the connections of nodes with each other.
-    for(let key of sender.connections){
-        
+    for(let key of sender.connections.keys()){
+        if(!reciever.connections.has(key)){
+           let arr=[];
+                for(let i of sender.connections.get(key)){
+                    arr.push(i)
+                }
 
-        reciever.connections.set(key,sender.connections.get(key))
+                reciever.connections.set(key,arr)
+        }    
     }
 }
 
 shareConnection(n2,n1);
-console.log(n2); 
+console.log(n2);
 
 
 // let map=new Map();
@@ -109,14 +114,5 @@ console.log(n2);
 // map.set("d",n4);
 
 // console.log(map);
-
-// let arr=[];
-// for(let key of map.keys()){
-//     arr.push(key);
-// }
-
-// console.log(arr);
-// console.log(map.get('a'));
-
 
 
