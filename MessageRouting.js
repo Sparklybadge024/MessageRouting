@@ -75,15 +75,15 @@ let arr=[];
 }
 
 
-console.log(knownNodes(n2)); //['Nest2']
+// console.log(knownNodes(n2)); //['Nest2']
 
 // Concept understood keys are reffered to as the properties of map just like the properties of object however in map keys are not stored in Arrays unlike objects
 
 
 
 // Task 5:- 
-console.log(n1);
-console.log(n2);
+// console.log(n1);
+// console.log(n2);
 
 // Copying connections means that 2 nodes learns about each others surroundings.
 
@@ -95,9 +95,9 @@ function shareConnection(reciever,sender){
         if(!reciever.connections.has(key)){
            let arr=[];
                 for(let i of sender.connections.get(key)){
+                    // This loop is specifically meant to copy the elements instead of referencing it.
                     arr.push(i)
                 }
-
                 reciever.connections.set(key,arr)
         }    
     }
@@ -118,8 +118,24 @@ function broadcastConnections(node,exceptFor=null){
 
 // Task 8:-
 function floodConnections(startNode){
-       
-}
+       broadcastConnections(startNode);
+
+       for(let i of startNode.neighbors){
+            broadcastConnections(i,startNode)
+        }
+        for(let j of startNode.neighbors){
+            floodConnections(j)
+        }
+    }
+
+floodConnections(n1);
+console.log(n1);
+
+
+
+
+
+
 
 
 
