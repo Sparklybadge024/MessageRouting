@@ -90,6 +90,7 @@ let arr=[];
 // Task 6:-
 
 function shareConnection(reciever,sender){
+    let changed=false;
     // This function shares the connections of nodes with each other.
     for(let key of sender.connections.keys()){
         if(!reciever.connections.has(key)){
@@ -99,8 +100,10 @@ function shareConnection(reciever,sender){
                     arr.push(i)
                 }
                 reciever.connections.set(key,arr)
+                changed=true;
         }    
     }
+    return changed;
 }
 
 
@@ -118,18 +121,19 @@ function broadcastConnections(node,exceptFor=null){
 
 // Task 8:-
 function floodConnections(startNode){
-       broadcastConnections(startNode);
-
        for(let i of startNode.neighbors){
-            broadcastConnections(i,startNode)
+        let changed=shareConnection(i,startNode);
+
+        if(changed){
+            floodConnections(i)
         }
-        for(let j of startNode.neighbors){
-            floodConnections(j)
-        }
+       }
     }
 
 floodConnections(n1);
 console.log(n1);
+console.log(n2);
+console.log(n3);
 
 
 
