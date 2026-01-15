@@ -163,3 +163,49 @@ let nextHop=findRoute(n1, n2, n1.connections);
 console.log(nextHop.name);
 
 
+function isDirectNeighbour(currentNode, targetNode){
+    // This will be a helper function for upcoming routeRequest function.
+    if(currentNode.neighbors.includes(targetNode)){
+        return true;
+    }
+    return false;
+}
+
+
+function getNextHop(currentNode, targetNode){
+    // This will be a helper function for upcoming routeRequest function.
+    if(currentNode.neighbors.includes(targetNode)){
+        return targetNode;
+    }else{
+        let route=findRoute(currentNode,targetNode,currentNode.connections);
+        if(route===null){
+            throw new Error("No Route Found")
+        }else{
+            return route;
+        }
+    }
+    
+
+}
+
+function receiveMessage(node,message){
+    // One more helper function for routeRequest
+    if(!node.seenMessages.includes(message)){
+        node.seenMessages.push(message)
+        console.log(`${node.name} has received ${message}`);
+    }
+ 
+}
+
+function routeRequest(currentNode,targetNode,message){
+
+    let nextHop=getNextHop(currentNode,targetNode,message);
+    if(currentNode===targetNode){
+    receiveMessage(currentNode,message);
+    return 
+    }else{
+    routeRequest(nextHop,targetNode,message);
+    }
+
+
+}
