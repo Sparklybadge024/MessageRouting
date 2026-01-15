@@ -138,11 +138,14 @@ console.log(n3);
 // Task 9:-
 
 function findRoute(from,to,connections){
-    
+
+    let work=[{at:from,via:null}];
+
+    for(let {at,via} of work){
+        let neighbours=connections.get(at)||[]
+
+        for(let next of neighbours)
+    }
 }
-
-
-
-
 
 
