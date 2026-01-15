@@ -49,7 +49,7 @@ connect(n3,n4);
 // Task 3:-
 function initConnections(node){
     // This function is used to populate the maps or the connections property of the nodes.
-    node.connections.set(node.name,node.neighbors)
+    node.connections.set(node,node.neighbors)
 }
 initConnections(n1);
 initConnections(n2);
@@ -144,8 +144,20 @@ function findRoute(from,to,connections){
     for(let {at,via} of work){
         let neighbours=connections.get(at)||[]
 
-        for(let next of neighbours)
+        for(let next of neighbours){
+            if(next===to){ 
+                return via||next;
+            }
+            if(!work.some(w=>w.at===next)){
+                work.push({at:next, via:via||next})
+            }
+        }
     }
+    return null;
 }
 
 
+
+
+let nextHop=findRoute(n1, n2, n1.connections);
+console.log(nextHop.name);
